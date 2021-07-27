@@ -1,0 +1,22 @@
+#go to this file
+sudo nano /etc/wsl.conf
+#change into this
+[network]
+generateResolvConf = false
+
+#shutdown WSL using powershell or CMD
+wsl --shutdown
+
+#then again go to WSL 2 instance- here Ubuntu 20.04
+#look file details
+ls -l /etc/resolv.conf
+#remove link
+rm /etc/resolv.conf
+#type below commands
+cat > /etc/resolv.conf <<EOF
+nameserver 8.8.8.8
+nameserver 8.8.4.4
+domain localnet.local
+EOF
+
+#check connection!!
